@@ -16,7 +16,7 @@ console.log(process.env.DB_USER);
 console.log(process.env.DB_PASS);
 
 
-const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.xnsnm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.jdtyh.mongodb.net/?appName=Cluster0`;
 console.log(uri);
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
@@ -38,7 +38,7 @@ async function run() {
     const coffeeCollection =client.db("coffeeDB").collection("coffee");
     const userCollection =client.db("coffeeDB").collection("user");
 
-
+ //2.1 read
     app.get('/coffee', async(req, res) =>{
         const cursor = coffeeCollection.find();
         const result = await cursor.toArray();
@@ -53,7 +53,7 @@ async function run() {
        })
     
 
-
+  //1.2create
    app.post('/coffee', async(req,res)=>{
     const newCoffee = req.body;
     console.log(newCoffee);
@@ -83,7 +83,7 @@ async function run() {
 
    })
 
-
+//3.1  delete
    app.delete('/coffee/:id', async(req, res) =>{
     const id  = req.params.id;
     const query = {_id: new ObjectId(id)}
@@ -156,3 +156,9 @@ app.get('/', (req, res) =>{
 app.listen(port, () =>{
     console.log(`Coffee server is running on port ${port}`);
 }) 
+
+
+
+
+// username:coffee
+// password:coffee246
