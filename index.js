@@ -35,8 +35,8 @@ async function run() {
 
 
     
-    const coffeeCollection =client.db("coffeeDB").collection("coffee");
-    const userCollection =client.db("coffeeDB").collection("user");
+    const coffeeCollection =client.db("coffeeMaster").collection("coffees");
+    const userCollection =client.db("coffeeMaster").collection("users");
 
  //2.1 read
     app.get('/coffee', async(req, res) =>{
